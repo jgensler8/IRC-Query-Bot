@@ -1,0 +1,10 @@
+1) vist URL, assigned a randid (possibly based on ip)
+2) extract randid from (cookie)
+3) send a POST to /start? with randid, receive the shard (JSON)
+4) send POSTs to /send, using shard
+5) receive POSTs from /events (JSON) Acccept: applicaiton/json
+4.optional) send POSTs to /events to simulate typing
+5) terminate by sending POSTs to /disconnect
+
+awk notes:
+split function to split header delimeters (from the cookies to get the UID)
