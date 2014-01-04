@@ -6,5 +6,11 @@
     "what": {
       "purpose": "To protect and serve"
     }
+  },
+  "query_wiki": {
+    "SEARCH":{
+      "TITLE": "/w/api.php?action=query&prop=extracts&format=json&exchars=250&exlimit=1&exintro=&titles=",
+      "TOPIC": "/w/api.php?action=query&prop=extracts&format=json&exchars=250&exlimit=10&exinter="
+    }
   }
 }
