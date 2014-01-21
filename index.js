@@ -71,8 +71,11 @@ function hit_wiki( qPath){
       wiki_data += data;
     });
     res.on('end', function(nothing){
-      //var wiki_json = JSON.parse( wiki_data);
-      socket.write( privmsg( botley, wiki_data) );
+      var wiki_json = JSON.parse( wiki_data);
+      for( page in wiki_json.query.pages){
+        var extract = wiki_json.query.pages[page].extract;
+        socket.write( privmsg( botley, extract));
+      } 
     });
   });
   wiki_request.on('error', function(e){
@@ -101,7 +104,7 @@ function parse_message(message){
           console.log("***PARSED A KEYWORD***");
           var start = message.indexOf('$');
           var end = message.indexOf('\r\n');
-          if( start != -1 && end != -1)
+          if( start != -1 && end != -1) //search term sliced out
             var searchTerm = message.slice(start+1, end);
           else return "REQUEST FAILED";
           console.log( searchTerm);
