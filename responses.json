@@ -9,9 +9,17 @@
   },
   "query_wiki": {
     "SEARCH":{
-      "TITLE": "/w/api.php?action=query&prop=extracts&format=json&exchars=250&exlimit=1&exintro=&explaintext=&titles=",
       "TOPIC": "/w/api.php?action=query&prop=extracts&format=json&exchars=250&exlimit=10&exintro=&explaintext=",
-      "RANDOM": "/w/api.php?action=query&list=random&format=json&exlimit=1"
+      "RANDOM": "/w/api.php?action=query&list=random&format=json&exlimit=1",
+      "TITLE": {
+        "action": "query",
+        "prop": "extracts",
+        "format": "json",
+        "exchars": "250",
+        "exlimit": "1",
+        "exintro": "",
+        "explaintext": ""
+      }
     }
   }
 }

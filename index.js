@@ -83,6 +83,16 @@ function hit_wiki( qPath){
   });
 }
 
+//construct the query from a JSON object of options
+function build_query( prepend, obj, postpend){
+  var query = "";
+  query += prepend;
+  for( parameter in obj)
+    query += parameter + "=" + obj[parameter] + "&";
+  query += postpend;
+  return query;
+}
+
 //parse the message to find out what to send to IRC server
 function parse_message(message){
   //is the users question about the bot
@@ -107,8 +117,7 @@ function parse_message(message){
           if( start != -1 && end != -1) //search term sliced out
             var searchTerm = message.slice(start+1, end);
           else return "REQUEST FAILED";
-          console.log( searchTerm);
-          hit_wiki( response_file.query_wiki[cmds][keyword] + searchTerm); 
+          hit_wiki( build_query( "/w/api.php?", response_file.query_wiki[cmds][keyword], "titles=" + searchTerm ) );
           return "SENDING REQUEST..."; 
         }
       }
