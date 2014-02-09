@@ -1,9 +1,9 @@
 **IRC bot**
 ==========
 Options Supported:
-[x]querying the English Wikipedia
-[] data aggregation for search topic
-[] fetch random article
+- [x]querying the English Wikipedia
+- [] data aggregation for search topic
+- [] fetch random article
 
 ==========
 How to run:
@@ -16,7 +16,7 @@ var botley = {
 }
 
 var irc_options = {
-  port: 66667
+  port: 6667
   host: '10.0.2.15' // or freenode.net
 }
 ```
