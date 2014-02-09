@@ -5,12 +5,28 @@
     },
     "what": {
       "purpose": "To protect and serve"
+    },
+    "help": {
+      "me": "SEARCH TITLE $title_goes_here"
     }
   },
   "query_wiki": {
     "SEARCH":{
-      "TOPIC": "/w/api.php?action=query&prop=extracts&format=json&exchars=250&exlimit=10&exintro=&explaintext=",
-      "RANDOM": "/w/api.php?action=query&list=random&format=json&exlimit=1",
+      "TOPIC": {
+        "action": "query",
+        "prop": "extracts",
+        "format": "json",
+        "exchars": "250",
+        "exlimit": "10",
+        "exintro": "",
+        "explaintext": ""
+      },
+      "RANDOM": {
+        "action": "query",
+        "list": "random",
+        "format": "json",
+        "exlimit": "1"
+      },
       "TITLE": {
         "action": "query",
         "prop": "extracts",

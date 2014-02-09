@@ -62,16 +62,17 @@ function privmsg(bot, message){
 
 
 // query the english wiki
-function hit_wiki( qPath){
-  console.log("***SETTING PATH TO: " + qPath + " ***");
+function hit_wiki( qPath, datapass){
+  //console.log("***SETTING PATH TO: " + qPath + " ***");
   wiki_options.path = qPath;
   var wiki_data = '';
   var wiki_request = http.get( wiki_options, function(res){
     res.on('data', function(data){
-      wiki_data += data;
+      wiki_data += data; //the data comes in chunks
     });
     res.on('end', function(nothing){
       var wiki_json = JSON.parse( wiki_data);
+      dataPass( wiki_json);
       for( page in wiki_json.query.pages){
         var extract = wiki_json.query.pages[page].extract;
         socket.write( privmsg( botley, extract));
@@ -91,6 +92,38 @@ function build_query( prepend, obj, postpend){
     query += parameter + "=" + obj[parameter] + "&";
   query += postpend;
   return query;
+}
+
+//figure out the query option + then hit the wiki
+function sortAndHit( cmds, keyword, searchTerm){
+  switch(keyword){
+    case "TOPIC":
+      hit_wiki( build_query( "/w/api.php?", response_file.query_wiki[cmds][keyword], "titles=" + searchTerm ), s_topic_callback);
+      break;
+    case "RANDOM":
+      hit_wiki( build_query( "/w/api.php?", response_file.query_wiki[cmds][keyword], ''), s_random_callback);
+      break;
+    case "TITLE":
+      hit_wiki( build_query( "/w/api.php?", response_file.query_wiki[cmds][keyword], "titles=" + searchTerm ), s_title_callback);
+      break;
+  }
+}
+
+var s_topic_callback = function search_topic( data){
+  //TODO
+}
+
+var s_random_callback = function search_random( data){
+  //TODO
+}
+
+var s_title_callback = function search_title( data){
+/*
+      for( page in wiki_json.query.pages){
+        var extract = wiki_json.query.pages[page].extract;
+        socket.write( privmsg( botley, extract));
+      } 
+*/
 }
 
 //parse the message to find out what to send to IRC server
@@ -117,7 +150,7 @@ function parse_message(message){
           if( start != -1 && end != -1) //search term sliced out
             var searchTerm = message.slice(start+1, end);
           else return "REQUEST FAILED";
-          hit_wiki( build_query( "/w/api.php?", response_file.query_wiki[cmds][keyword], "titles=" + searchTerm ) );
+          sortAndHit( cmds, keyword, searchTerm);
           return "SENDING REQUEST..."; 
         }
       }
