@@ -1,9 +1,13 @@
 **IRC bot**
 ==========
+
 Options Supported:
--[x] querying the English Wikipedia
--[ ] data aggregation for search topic
--[ ] fetch random article
+
+| Status | Option | Description |
+| --- | --- | --- |
+| working | TITLE | basic query of the English Wikipedia |
+| in progress | TOPIC | data aggregation for topic | 
+| in progress | RANDOM | fetch random article |
 
 ##How to run:##
 
