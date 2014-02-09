@@ -1,9 +1,9 @@
 **IRC bot**
 ==========
 Options Supported:
-[x] querying the English Wikipedia
-[ ] data aggregation for search topic
-[ ] fetch random article
+-[x] querying the English Wikipedia
+-[ ] data aggregation for search topic
+-[ ] fetch random article
 
 ##How to run:##
 
@@ -23,7 +23,7 @@ var irc_options = {
 $ node index.js
 ```
 ##How to query:##
-1. when the bot has connected
+1. when the bot has connected to the IRC channel, send a message in this format
 ```
 SEARCH TITLE $title_goes_here
 SEARCH TOPIC $topic_goes_here
