@@ -5,10 +5,10 @@ Options Supported:
 - [] data aggregation for search topic
 - [] fetch random article
 
-==========
-How to run:
+---
+#How to run:#
 
-1) edit the options in index.js
+- 1) edit the options in index.js
 ```
 var botley = {
   name: "BOTLEY"
@@ -21,15 +21,17 @@ var irc_options = {
 }
 ```
 
-2) then a simple:
+- 2) then a simple:
 ```
 ./node index.js
 ```
 
-==========
-How to use:
-1) when the bot has connected
+---
+#How to query:#
+- 1) when the bot has connected
 ```
 SEARCH TITLE $title_goes_here
+SEARCH TOPIC $topic_goes_here
+SEARCH RANDOM $
 ```
 
