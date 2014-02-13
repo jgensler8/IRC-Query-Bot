@@ -3,6 +3,12 @@ var botley = {
   channel: "#bot",
 };
 
+
+
+
+
+
+
 var irc_options = {
   port: 6667,
   host: '10.0.2.15'
