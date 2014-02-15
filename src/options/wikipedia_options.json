@@ -1,0 +1,28 @@
+{
+  "SEARCH": {
+    "TOPIC": {
+      "action": "query",
+      "prop": "extracts",
+      "format": "json",
+      "exchars": "",
+      "exlimit": "10",
+      "exintro": "",
+      "explaintext": ""
+    },
+    "RANDOM": {
+      "action": "query",
+      "list": "random",
+      "format": "json",
+      "exlimit": "1"
+    },
+    "TITLE": {
+      "action": "query",
+      "prop": "extracts",
+      "format": "json",
+      "exchars": "",
+      "exlimit": "1",
+      "exintro": "",
+      "explaintext": ""
+    }
+  }
+}

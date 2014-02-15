@@ -1,0 +1,11 @@
+{
+  "bot": {
+    "name": "BOTLEY",
+    "channel": "#bot",
+    "channelPass": ""
+  },
+  "connection": {
+    "port": 6667,
+    "host": "10.0.2.15"
+  }
+}
