@@ -15,17 +15,15 @@ function log( string){
 }
 
 // load irc option files
-var irc_opt = require("./src/options/irc_options.json");
-var alice = require("./src/alice.js");
-var queyr = require("./src/query.js");
+var irc_opt = require("./irc_options.json");
+var alice = require("./src/alice/alice");
+var query = require("./src/query/query");
 
 // open the IRC socket
 var net_irc = require('net');
 var socket_irc = net_irc.connect( irc_opt.connection );
 socket_irc.on('data', onIRCData);
 socket_irc.on('connect', onIRCConnect);
-
-//socket.write( "PRIVMSG " + irc_opt.channel + " :" + parse_message(message) + "\r\n";
 
 //when we connect to the IRC server, authenticate
 function onIRCConnect(){
@@ -47,9 +45,14 @@ function onIRCData(data){
     }
     else if( message.match( /PONG/ )){
       log("Pong received");
-      socket_rc.write("PING");
+      socket_irc.write("PING");
     }
     else handle_message_role(message);
+}
+
+//send a message to the IRC room
+function sendIRCMessage( message){
+  socket_irc.write( "PRIVMSG " + irc_opt.bot.channel + " :" + message + "\r\n");
 }
 
 //when we receive data, check if it is trying
@@ -57,7 +60,7 @@ function onIRCData(data){
 function handle_message_role( message){
   if( is_option_change( message) ){}
   else if( role.alice) resolve_alice( message);
-  else if( role.query) resolve_query( message);
+  else if( role.query) query.resolve_query( message, sendIRCMessage);
 }
 
 //check if we are trying to change an option
@@ -71,12 +74,17 @@ function is_option_change( message){
     else log("*** query***");  
     return true;
   }
+  else if( message.match(/GET ROLE/)){
+    if( role.alice) sendIRCMessage("ROLE IS: ALICE");
+    else if ( role.query) sendIRCMessage("ROLE IS: QUERY");
+    return true;
+  }
   return false;
 }
 
 // resolve a query that the bot received form IRC
 function resolve_query( message){
-  log(message);
+  
 }
 
 // resolve a query that the bot received form IRC

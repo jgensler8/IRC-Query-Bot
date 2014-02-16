@@ -1,11 +1,13 @@
 {
-  "wikipedia": {
+  "WIKI": {
     "options": {
       "port": 80,
       "host": "en.wikipedia.org",
       "path": "/",
       "method": "GET"
-    },
-    "query_file": "wikipedia_options.json"
+    }
+  },
+  "TWIT": {
+    "TODO": "TODO"
   }
 }

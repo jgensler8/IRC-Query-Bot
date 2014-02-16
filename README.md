@@ -5,9 +5,12 @@ Options Supported:
 
 | Status | Option | Description |
 | --- | --- | --- |
-| working | TITLE | basic query of the English Wikipedia |
+| working | SWAP ROLE | switch the bot to handle ALICE conversations or querying |
+| working | GET ROLE | return the role the bot is in (default is query) |
+| working\* | TITLE | basic query of the English Wikipedia |
 | in progress | TOPIC | data aggregation for topic | 
 | in progress | RANDOM | fetch random article |
+\*I am in the process of refactoring my old code. Will be running in a week or so
 
 ##How to run:##
 
@@ -24,7 +27,7 @@ var irc_options = {
 ```
 2.  assuming you have node.js, a simple:
 ```
-$ node index.js
+$ node irc_bot.js
 ```
 ##How to query:##
 1. when the bot has connected to the IRC channel, send a message in this format
@@ -33,5 +36,3 @@ SEARCH TITLE $title_goes_here
 SEARCH TOPIC $topic_goes_here
 SEARCH RANDOM $
 ```
-
-;alkdsjf;lsaf;lasjfd;lj
