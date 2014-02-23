@@ -14,15 +14,18 @@ Options Supported:
 
 ##How to run:##
 
-1. edit the options in index.js
+1. edit the options in irc_options.json
 ```
-var botley = {
-  name: "BOTLEY" // or other
-  channel: "#bot" // or any other channel
-}
-var irc_options = {
-  port: 6667 // or other
-  host: '10.0.2.15' // or freenode.net
+{
+  "bot": {
+    "name": "BOTLEY" // or other
+    "channel":"#bot" // or any other channel
+    "channelPass": ""
+  },
+  "connection": {
+    port: 6667 // or other
+    host: '10.0.2.15' // or freenode.net
+  }
 }
 ```
 2.  assuming you have node.js, a simple:
